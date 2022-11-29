@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "cache-control-middleware",
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,9 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^18.11.7",
+    "end-response-middleware": "github:wright-jordan/end-response-middleware",
     "prettier": "2.7.1",
+    "ts-http": "github:wright-jordan/ts-http",
     "typescript": "^4.8.4"
   }
 }
