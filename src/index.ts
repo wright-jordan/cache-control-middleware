@@ -26,7 +26,7 @@ function use(next: tsHTTP.Handler): tsHTTP.Handler {
     const oldETag = req.headers["if-none-match"] || "";
     const newETag = Buffer.from(
       await webcrypto.subtle.digest(
-        "SHA-256",
+        "SHA-1",
         new TextEncoder().encode(ctx.reply)
       )
     ).toString("base64url");
