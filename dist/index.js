@@ -1,4 +1,4 @@
-import { createHash } from "crypto";
+import { webcrypto } from "crypto";
 function use(next) {
     return async function cacheControlMiddleware(req, res, ctx) {
         await next(req, res, ctx);
@@ -10,7 +10,7 @@ function use(next) {
             return;
         }
         const oldETag = req.headers["if-none-match"] || "";
-        const newETag = createHash("sha256").update(ctx.reply).digest("hex");
+        const newETag = Buffer.from(await webcrypto.subtle.digest("SHA-256", new TextEncoder().encode(ctx.reply))).toString("base64url");
         res.setHeader("ETag", newETag);
         if (oldETag === newETag) {
             ctx.status = 304;
