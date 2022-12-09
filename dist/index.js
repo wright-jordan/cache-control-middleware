@@ -10,7 +10,7 @@ function use(next) {
             return;
         }
         const oldETag = req.headers["if-none-match"] || "";
-        const newETag = Buffer.from(await webcrypto.subtle.digest("SHA-1", new TextEncoder().encode(ctx.reply))).toString("base64url");
+        const newETag = Buffer.from(await webcrypto.subtle.digest("SHA-1", new TextEncoder().encode(ctx.reply))).toString("hex");
         res.setHeader("ETag", newETag);
         if (oldETag === newETag) {
             ctx.status = 304;

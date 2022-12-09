@@ -29,7 +29,7 @@ function use(next: tsHTTP.Handler): tsHTTP.Handler {
         "SHA-1",
         new TextEncoder().encode(ctx.reply)
       )
-    ).toString("base64url");
+    ).toString("hex");
 
     res.setHeader("ETag", newETag);
 
