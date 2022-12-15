@@ -2,6 +2,8 @@ import { webcrypto } from "crypto";
 import type * as tsHTTP from "ts-http";
 import type * as _ from "end-response-middleware";
 
+// TODO: this module shouldn't be middleware. Just make a function.
+
 declare module "ts-http" {
   interface Context {
     cacheStrategy: Strategy;
